@@ -59,13 +59,13 @@ Variants {
         property real parallaxTotalPixelsY: Math.max(0, scaledWallpaperHeight - screen.height)
         readonly property bool verticalParallax: (Config.options.background.parallax.autoVertical && wallpaperHeight > wallpaperWidth) || Config.options.background.parallax.vertical
         // Colors
-        property bool shouldBlur: (GlobalStates.screenLocked && Config.options.lock.blur.enable)
+        property bool locked: GlobalStates.screenLocked
         property color dominantColor: Appearance.colors.colPrimary // Default, to be changed
         property bool dominantColorIsDark: dominantColor.hslLightness < 0.5
         property color colText: {
             if (wallpaperSafetyTriggered)
                 return CF.ColorUtils.mix(Appearance.colors.colOnLayer0, Appearance.colors.colPrimary, 0.75);
-            return (GlobalStates.screenLocked && shouldBlur) ? Appearance.colors.colOnLayer0 : CF.ColorUtils.colorWithLightness(Appearance.colors.colPrimary, (dominantColorIsDark ? 0.8 : 0.12));
+            return locked ? Appearance.colors.colOnLayer0 : CF.ColorUtils.colorWithLightness(Appearance.colors.colPrimary, (dominantColorIsDark ? 0.8 : 0.12));
         }
         Behavior on colText {
             animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
@@ -84,6 +84,8 @@ Variants {
             right: true
         }
         color: {
+            if (bgRoot.locked)
+                return Appearance.colors.colLayer0;
             if (!bgRoot.wallpaperSafetyTriggered || bgRoot.wallpaperIsVideo)
                 return "transparent";
             return CF.ColorUtils.mix(Appearance.colors.colLayer0, Appearance.colors.colPrimary, 0.75);
@@ -130,7 +132,7 @@ Variants {
             // Wallpaper
             StyledImage {
                 id: wallpaper
-                visible: opacity > 0 && !blurLoader.active
+                visible: opacity > 0 && !blurLoader.active && !bgRoot.locked
                 opacity: (status === Image.Ready && !bgRoot.wallpaperIsVideo) ? 1 : 0
                 cache: false
                 smooth: false
@@ -200,7 +202,7 @@ Variants {
 
             Loader {
                 id: blurLoader
-                active: Config.options.lock.blur.enable && (GlobalStates.screenLocked || scaleAnim.running)
+                active: !bgRoot.locked && Config.options.lock.blur.enable && (GlobalStates.screenLocked || scaleAnim.running)
                 anchors.fill: wallpaper
                 scale: GlobalStates.screenLocked ? Config.options.lock.blur.extraZoom : 1
                 Behavior on scale {
