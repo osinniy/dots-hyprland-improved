@@ -384,7 +384,6 @@
   "There might be a download in progress": "ダウンロードが進行中のようです",
   "Approve": "承認",
   "Tray": "トレイ",
-  "**Instructions**: Log into Mistral account, go to Keys on the sidebar, click Create new key": "**手順**: Mistralアカウントにログインし、サイドバーのKeysに進み、Create new keyをクリックしてください",
   "Pomodoro": "ポモドーロ",
   "Language setting saved. Please restart Quickshell (Ctrl+Super+R) to apply the new language.": "言語設定を保存しました。新しい言語を適用するにはQuickshellを再起動してください（Ctrl+Super+R）。",
   "Feels like %1": "体感温度 %1",

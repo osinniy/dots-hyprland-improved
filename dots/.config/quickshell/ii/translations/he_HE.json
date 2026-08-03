@@ -325,7 +325,6 @@
   "Commands, edit configs, search.\nTakes an extra turn to switch to search mode if that's needed": "פקודות, עריכת קונפיגים, חיפוש.\nנדרש סיבוב נוסף למעבר למצב חיפוש אם צריך",
   "Tonal Spot": "נקודת טון",
   "Output": "פלט",
-  "**Instructions**: Log into Mistral account, go to Keys on the sidebar, click Create new key": "**הוראות**: התחבר לחשבון Mistral, עבור ל-Keys בסרגל הצד, לחץ על Create new key",
   "Unknown function call: %1": "קריאת פונקציה לא ידועה: %1",
   "Interface Language": "שפת ממשק",
   "Fully charged": "טעון במלואו",

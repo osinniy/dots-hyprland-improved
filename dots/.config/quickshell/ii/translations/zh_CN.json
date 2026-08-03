@@ -281,7 +281,6 @@
   "Medium": "适中",
   "Tint icons": "图标着色",
   "Performance Profile toggle": "性能配置切换",
-  "**Instructions**: Log into Mistral account, go to Keys on the sidebar, click Create new key": "**说明**：登录 Mistral 账户，在侧边栏中选择 Keys，点击 Create new key",
   "Invalid arguments. Must provide `command`.": "参数无效。必须提供 `command`。",
   "Thought": "思考",
   "Online | Google's model\nA Gemini 2.5 Flash model optimized for cost-efficiency and high throughput.": "在线 | Google 的模型\n针对成本效益和高吞吐量优化的 Gemini 2.5 Flash 模型。",
