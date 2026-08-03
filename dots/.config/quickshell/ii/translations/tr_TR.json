@@ -10,7 +10,7 @@
   "Unknown Artist": "Bilinmeyen Sanatçı",
   "Web search": "Web araması",
   "Load prompt from %1": "%1'den komut yükle",
-  "Attach a file. Only works with Gemini.": "Dosya ekle. Sadece Gemini ile çalışır.",
+  "Attach a file": "Dosya ekle",
   "Reboot": "Yeniden Başlat",
   "API key:\n\n```txt\n%1\n```": "API anahtarı:\n\n```txt\n%1\n```",
   "Pinned on startup": "Başlangıçta sabitle",

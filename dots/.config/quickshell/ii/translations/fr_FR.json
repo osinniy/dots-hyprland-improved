@@ -10,7 +10,7 @@
   "Unknown Artist": "Artiste inconnu",
   "Web search": "Recherche web",
   "Load prompt from %1": "Charger l'invite depuis %1",
-  "Attach a file. Only works with Gemini.": "Joindre un fichier. Fonctionne uniquement avec Gemini.",
+  "Attach a file": "Joindre un fichier",
   "Reboot": "Redémarrer",
   "API key:\n\n```txt\n%1\n```": "Clé API :\n\n```txt\n%1\n```",
   "Pinned on startup": "Épinglé au démarrage",

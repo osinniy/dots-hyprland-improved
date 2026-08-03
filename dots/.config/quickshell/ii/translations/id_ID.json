@@ -10,7 +10,7 @@
   "Unknown Artist": "Artis tidak dikenal",
   "Web search": "Pencarian web",
   "Load prompt from %1": "Muat prompt dari %1",
-  "Attach a file. Only works with Gemini.": "Lampirkan file. Hanya berfungsi dengan Gemini.",
+  "Attach a file": "Lampirkan file",
   "Reboot": "Mulai ulang",
   "API key:\n\n```txt\n%1\n```": "Kunci API:\n\n```txt\n%1\n```",
   "Pinned on startup": "Disematkan saat startup",

@@ -608,7 +608,7 @@
   "**Pricing**: free. Data used for training.\n\n**Instructions**: Log into Google account, allow AI Studio to create Google Cloud project or whatever it asks, go back and click Get API key": "**Precio**: gratis. Los datos se usan para entrenamiento.\n\n**Instrucciones**: Inicia sesión en tu cuenta de Google, permite que AI Studio cree un proyecto de Google Cloud o lo que solicite, regresa y haz clic en Obtener clave API",
   "Forget": "Olvidar",
   "Loaded the following system prompt\n\n---\n\n%1": "Se cargó el siguiente prompt de sistema\n\n---\n\n%1",
-  "Attach a file. Only works with Gemini.": "Adjuntar un archivo. Solo funciona con Gemini.",
+  "Attach a file": "Adjuntar un archivo",
   "Temperature set to %1": "Temperatura establecida en %1",
   "Desktop": "Escritorio",
   "Preferred wallpaper zoom (%)": "Zoom preferido del fondo de pantalla (%)",

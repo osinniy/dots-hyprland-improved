@@ -282,7 +282,7 @@
   "Clear chat history": "נקה היסטוריית שיחות",
   "Resume": "המשך",
   "Set the current API provider": "הגדר את ספק ה-API הנוכחי",
-  "Attach a file. Only works with Gemini.": "צרף קובץ. עובד רק עם Gemini.",
+  "Attach a file": "צרף קובץ",
   "Critical warning": "אזהרה קריטית",
   "Connection failed. Please inspect manually with the <tt>warp-cli</tt> command": "החיבור נכשל. נא לבדוק ידנית עם הפקודה <tt>warp-cli</tt>",
   "Usage: %1load CHAT_NAME": "שימוש: %1load CHAT_NAME",

@@ -1,7 +1,11 @@
 import QtQuick
+import qs.modules.common.functions as CF
 
 ApiStrategy {
     property bool isReasoning: false
+    readonly property string imageMimeTypeVarName: "IMAGE_MIME"
+    readonly property string imageBase64VarName: "IMAGE_BASE64"
+    readonly property string imageDataUriSubstitutionString: "{{ imageDataUri }}"
     
     function buildEndpoint(model: AiModel): string {
         // console.log("[AI] Endpoint: " + model.endpoint);
@@ -9,16 +13,25 @@ ApiStrategy {
     }
 
     function buildRequestData(model: AiModel, messages, systemPrompt: string, temperature: real, tools: list<var>, filePath: string) {
+        let contentMessages = messages.map(message => {
+            return {
+                "role": message.role,
+                "content": message.rawContent,
+            }
+        });
+        if (filePath && filePath.length > 0) {
+            // Attach the pending image to the last message as a content part
+            const lastMessage = contentMessages[contentMessages.length - 1];
+            lastMessage.content = [
+                { "type": "text", "text": lastMessage.content },
+                { "type": "image_url", "image_url": { "url": imageDataUriSubstitutionString } },
+            ];
+        }
         let baseData = {
             "model": model.model,
             "messages": [
                 {role: "system", content: systemPrompt},
-                ...messages.map(message => {
-                    return {
-                        "role": message.role,
-                        "content": message.rawContent,
-                    }
-                }),
+                ...contentMessages,
             ],
             "stream": true,
             "tools": tools,
@@ -111,6 +124,19 @@ ApiStrategy {
     function onRequestFinished(message) {
         // OpenAI format doesn't need special finish handling
         return {};
+    }
+
+    function buildScriptFileSetup(filePath) {
+        const trimmedFilePath = CF.FileUtils.trimFileProtocol(filePath);
+        let content = ""
+        content += `IMAGE_PATH='${CF.StringUtils.shellSingleQuoteEscape(trimmedFilePath)}'\n`;
+        content += `${imageMimeTypeVarName}=$(file -b --mime-type "$IMAGE_PATH")\n`;
+        content += `${imageBase64VarName}=$(base64 -w0 "$IMAGE_PATH")\n`;
+        return content
+    }
+
+    function finalizeScriptContent(scriptContent: string): string {
+        return scriptContent.replace(imageDataUriSubstitutionString, `'"data:\${${imageMimeTypeVarName}};base64,\${${imageBase64VarName}}"'`);
     }
     
     function reset() {
