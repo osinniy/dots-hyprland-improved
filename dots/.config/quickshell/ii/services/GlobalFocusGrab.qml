@@ -60,12 +60,26 @@ Singleton {
         );
     }
 
+    // Debounce timer to prevent immediate dismiss on transient cleared events.
+    // When windows list changes during content load, HyprlandFocusGrab can be
+    // cleared and re-activated rapidly. Without debounce this causes sidebars
+    // to "blink" (open then immediately close).
+    Timer {
+        id: dismissDebounce
+        interval: 100
+        onTriggered: {
+            if (!grab.active) {
+                root.dismiss();
+            }
+        }
+    }
+
     HyprlandFocusGrab {
         id: grab
         windows: root.dismissable.every(w => !w?.focusable) || root.dismissable.some(w => hasActive(w?.contentItem)) ? [...root.dismissable, ...root.persistent] : [...root.dismissable]
         active: root.dismissable.length > 0
         onCleared: () => {
-            root.dismiss();
+            dismissDebounce.restart();
         }
     }
 
