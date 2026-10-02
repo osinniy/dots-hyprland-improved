@@ -85,7 +85,7 @@ Variants {
         }
         color: {
             if (bgRoot.locked)
-                return Appearance.colors.colLayer0;
+                return CF.ColorUtils.applyAlpha(Appearance.colors.colLayer0, 1);
             if (!bgRoot.wallpaperSafetyTriggered || bgRoot.wallpaperIsVideo)
                 return "transparent";
             return CF.ColorUtils.mix(Appearance.colors.colLayer0, Appearance.colors.colPrimary, 0.75);

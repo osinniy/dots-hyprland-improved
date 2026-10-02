@@ -266,8 +266,11 @@ Rectangle {
                 model: IndexModel {
                     id: workspaceIndexModel
                     count: {
+                        // Cap the count so a stray high workspace id (e.g. leftover
+                        // lock-screen temp workspace 2147483647 - N) can't blow up
+                        // the model into billions of items.
                         const maxWorkspaceId = Math.max.apply(null, HyprlandData.workspaces.map(ws => ws.id));
-                        return Math.max(maxWorkspaceId, 1) + 1;
+                        return Math.max(Math.min(maxWorkspaceId, 1000), 1) + 1;
                     }
                 }
                 delegate: TaskViewWorkspace {

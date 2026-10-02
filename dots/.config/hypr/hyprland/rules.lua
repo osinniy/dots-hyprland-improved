@@ -137,7 +137,6 @@ hl.layer_rule({ match = { namespace = "quickshell:actionCenter" }, no_anim = tru
 hl.layer_rule({ match = { namespace = "quickshell:cheatsheet" }, animation = "slide bottom"})
 hl.layer_rule({ match = { namespace = "quickshell:dock" }, animation = "slide bottom"})
 hl.layer_rule({ match = { namespace = "quickshell:screenCorners" }, animation = "popin 120%"})
-hl.layer_rule({ match = { namespace = "quickshell:lockWindowPusher" }, no_anim = true})
 hl.layer_rule({ match = { namespace = "quickshell:notificationPopup" }, animation = "fade"})
 hl.layer_rule({ match = { namespace = "quickshell:overlay" }, no_anim = true})
 hl.layer_rule({ match = { namespace = "quickshell:overlay" }, ignore_alpha = 1})
